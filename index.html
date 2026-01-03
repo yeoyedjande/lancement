@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Todo Flow — Organisez vos journées</title>
+    <meta
+      name="description"
+      content="Une application de todo list fluide, élégante et rapide pour planifier vos journées."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Todo Flow</p>
+          <h1>Une todo list fluide, design et efficace.</h1>
+          <p class="subtitle">
+            Capturez vos tâches, priorisez en un clic, et gardez le contrôle de votre journée.
+          </p>
+        </div>
+        <div class="stats">
+          <div>
+            <strong id="task-count">0</strong>
+            <span>Tâches actives</span>
+          </div>
+          <div>
+            <strong id="done-count">0</strong>
+            <span>Terminées aujourd'hui</span>
+          </div>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="composer">
+          <h2>Nouvelle tâche</h2>
+          <form class="todo-form" autocomplete="off">
+            <input
+              type="text"
+              name="title"
+              placeholder="Ex : Préparer la présentation client"
+              required
+            />
+            <select name="priority" aria-label="Priorité">
+              <option value="high">Priorité haute</option>
+              <option value="medium" selected>Priorité moyenne</option>
+              <option value="low">Priorité faible</option>
+            </select>
+            <input type="date" name="due" />
+            <button type="submit">Ajouter</button>
+          </form>
+
+          <div class="filters">
+            <button class="filter active" data-filter="all">Toutes</button>
+            <button class="filter" data-filter="active">En cours</button>
+            <button class="filter" data-filter="done">Terminées</button>
+          </div>
+        </section>
+
+        <section class="board">
+          <div class="board-head">
+            <h2>Vos tâches</h2>
+            <div class="board-actions">
+              <button id="clear-completed" class="ghost">Supprimer terminées</button>
+              <button id="clear-all" class="ghost">Tout effacer</button>
+            </div>
+          </div>
+
+          <ul class="todo-list" aria-live="polite"></ul>
+        </section>
+      </main>
+    </div>
+
+    <template id="todo-item-template">
+      <li class="todo-item">
+        <button class="check" aria-label="Marquer comme terminée"></button>
+        <div class="todo-content">
+          <p class="title"></p>
+          <div class="meta">
+            <span class="priority"></span>
+            <span class="due"></span>
+          </div>
+        </div>
+        <button class="delete" aria-label="Supprimer la tâche">Supprimer</button>
+      </li>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
